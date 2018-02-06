@@ -1,6 +1,7 @@
 #include "BinaryTree.h"
+#include <queue>
 
-
+using namespace std;
 
 BinaryTree::BinaryTree()
 {
@@ -105,4 +106,32 @@ void BinaryTree::InOrderTraversal(Node *root)
     InOrderTraversal(root->left);
     root->PrintNode();
     InOrderTraversal(root->right);
+}
+
+void BinaryTree::LevelOrderTraveral()
+{
+    queue<Node*> levelQ;
+
+    auto temp = m_root;
+    levelQ.push(temp);
+    while (temp != nullptr)
+    {
+        if (!levelQ.empty())
+        {
+            temp = levelQ.front();
+            levelQ.pop();
+        }
+        else
+            break;
+
+        temp->PrintNode();
+        if (temp->left != nullptr)
+        {
+            levelQ.push(temp->left);
+        }
+        if (temp->right != nullptr)
+        {
+            levelQ.push(temp->right);
+        }        
+    }
 }

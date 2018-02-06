@@ -39,5 +39,9 @@ int main()
 
     bt.InOrderTraversal();
 
+    cout << endl << "Level Order Traversal" << endl;
+
+    bt.LevelOrderTraveral();
+
     cout << "End of program";
 }

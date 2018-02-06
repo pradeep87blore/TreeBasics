@@ -13,6 +13,7 @@ class BinaryTree
 
     void InOrderTraversal(Node *root);
 
+
 public:
     BinaryTree();
     ~BinaryTree();
@@ -27,6 +28,8 @@ public:
 
     void InOrderTraversal();
 
-    void Insert(int data); // Public interface
+    void Insert(int data); 
+
+    void LevelOrderTraveral();
 };
 
