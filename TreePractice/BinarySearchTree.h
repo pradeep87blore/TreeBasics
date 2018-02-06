@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Node.h"
-class BinaryTree
+class BinarySearchTree
 {
     Node *m_root = nullptr;
 
@@ -13,14 +13,19 @@ class BinaryTree
 
     void InOrderTraversal(Node *root);
 
+    void DeleteTree(Node *root);
+
+    Node* Search(int data, Node *root);
 
 public:
-    BinaryTree();
-    ~BinaryTree();
+    BinarySearchTree();
+    ~BinarySearchTree();
     
     void Delete(int data);
 
     bool Search(int data);
+
+    void Insert(int data);
 
     void PreOrderTraversal();
 
@@ -28,8 +33,8 @@ public:
 
     void InOrderTraversal();
 
-    void Insert(int data); 
-
     void LevelOrderTraveral();
+
+    void DeleteTree();
 };
 

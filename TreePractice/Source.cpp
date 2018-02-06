@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
 
-#include "BinaryTree.h"
+#include "BinarySearchTree.h"
 
 using namespace std;
 
 int main()
 {
-    BinaryTree bt;
+    BinarySearchTree bt;
 
     bt.Insert(10);
     bt.Insert(8);
@@ -42,6 +42,15 @@ int main()
     cout << endl << "Level Order Traversal" << endl;
 
     bt.LevelOrderTraveral();
+
+    int iSearchKey = 0;
+    cout << "Enter a number to search : " << endl;
+    cin >> iSearchKey;
+
+    if (bt.Search(iSearchKey) == true)
+        cout << iSearchKey << " found in the tree" << endl;
+    else
+        cout << iSearchKey << " not found in the tree" << endl;
 
     cout << "End of program";
 }

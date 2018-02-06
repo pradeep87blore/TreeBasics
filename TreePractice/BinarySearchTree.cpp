@@ -1,19 +1,19 @@
-#include "BinaryTree.h"
+#include "BinarySearchTree.h"
 #include <queue>
 
 using namespace std;
 
-BinaryTree::BinaryTree()
+BinarySearchTree::BinarySearchTree()
 {
 
 }
 
-BinaryTree::~BinaryTree()
+BinarySearchTree::~BinarySearchTree()
 {
-
+    DeleteTree(); // Clean the memory up
 }
 
-void BinaryTree::Insert(int data)
+void BinarySearchTree::Insert(int data)
 {
     if (m_root != nullptr)
         Insert(m_root, data);
@@ -24,7 +24,7 @@ void BinaryTree::Insert(int data)
     }
 }
 
-void BinaryTree::Insert(Node *root, int data)
+void BinarySearchTree::Insert(Node *root, int data)
 {    
     if (root == nullptr)
     {
@@ -51,22 +51,17 @@ void BinaryTree::Insert(Node *root, int data)
     
 }
 
-void BinaryTree::Delete(int data)
+void BinarySearchTree::Delete(int data)
 {
 
 }
 
-bool BinaryTree::Search(int data)
-{
-    return false;
-}
-
-void BinaryTree::PreOrderTraversal()
+void BinarySearchTree::PreOrderTraversal()
 {
     PreOrderTraversal(m_root);
 }
 
-void BinaryTree::PreOrderTraversal(Node *root)
+void BinarySearchTree::PreOrderTraversal(Node *root)
 {
     if (root == nullptr)
     {
@@ -78,17 +73,17 @@ void BinaryTree::PreOrderTraversal(Node *root)
     PreOrderTraversal(root->right);
 }
 
-void BinaryTree::PostOrderTraversal()
+void BinarySearchTree::PostOrderTraversal()
 {
     PostOrderTraversal(m_root);
 }
 
-void BinaryTree::InOrderTraversal()
+void BinarySearchTree::InOrderTraversal()
 {
     InOrderTraversal(m_root);
 }
 
-void BinaryTree::PostOrderTraversal(Node *root)
+void BinarySearchTree::PostOrderTraversal(Node *root)
 {
     if (root == nullptr)
         return;
@@ -98,7 +93,7 @@ void BinaryTree::PostOrderTraversal(Node *root)
     root->PrintNode();
 }
 
-void BinaryTree::InOrderTraversal(Node *root)
+void BinarySearchTree::InOrderTraversal(Node *root)
 {
     if (root == nullptr)
         return;
@@ -108,7 +103,7 @@ void BinaryTree::InOrderTraversal(Node *root)
     InOrderTraversal(root->right);
 }
 
-void BinaryTree::LevelOrderTraveral()
+void BinarySearchTree::LevelOrderTraveral()
 {
     queue<Node*> levelQ;
 
@@ -134,4 +129,40 @@ void BinaryTree::LevelOrderTraveral()
             levelQ.push(temp->right);
         }        
     }
+}
+
+void BinarySearchTree::DeleteTree()
+{
+    DeleteTree(m_root);
+    m_root = nullptr;
+}
+
+void BinarySearchTree::DeleteTree(Node *root)
+{
+    if (root == nullptr)
+        return; // Base case
+
+    DeleteTree(root->left);
+    DeleteTree(root->right);
+    delete root;
+}
+
+bool BinarySearchTree::Search(int data)
+{
+    Node *node = Search(data, m_root);
+    return (node != nullptr); // If a non-null node received, the value was found in the tree, else it was not.
+}
+
+Node* BinarySearchTree::Search(int data, Node *root)
+{
+    if (root == nullptr)
+        return nullptr;
+
+    if (root->data == data)
+        return root;
+
+    if (root->data > data)
+        return Search(data, root->left);
+    else
+        return Search(data, root->right);
 }
