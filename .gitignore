@@ -1,0 +1,6 @@
+Debug
+.vs
+Trees/Debug
+*.exe
+*.db
+*.opendb
