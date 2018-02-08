@@ -10,7 +10,7 @@ BinarySearchTree::BinarySearchTree()
 
 BinarySearchTree::~BinarySearchTree()
 {
-    DeleteTree(); // Clean the memory up
+    //DeleteTree(); // Clean the memory up
 }
 
 void BinarySearchTree::Insert(int data)
@@ -51,10 +51,19 @@ void BinarySearchTree::Insert(Node *root, int data)
     
 }
 
-void BinarySearchTree::Delete(int data)
-{
+//void BinarySearchTree::DeleteNode(int data, Node *node)
+//{
+//    // First find the node.
+//    // Then delete it.
+//    auto Node = Search(data, m_root);
+//
+//
+//}
 
-}
+//void BinarySearchTree::Delete(int data)
+//{
+//    DeleteNode(data, m_root);
+//}
 
 void BinarySearchTree::PreOrderTraversal()
 {
@@ -131,21 +140,21 @@ void BinarySearchTree::LevelOrderTraveral()
     }
 }
 
-void BinarySearchTree::DeleteTree()
-{
-    DeleteTree(m_root);
-    m_root = nullptr;
-}
-
-void BinarySearchTree::DeleteTree(Node *root)
-{
-    if (root == nullptr)
-        return; // Base case
-
-    DeleteTree(root->left);
-    DeleteTree(root->right);
-    delete root;
-}
+//void BinarySearchTree::DeleteTree()
+//{
+//    DeleteTree(m_root);
+//    m_root = nullptr;
+//}
+//
+//void BinarySearchTree::DeleteTree(Node *root)
+//{
+//    if (root == nullptr)
+//        return; // Base case
+//
+//    DeleteTree(root->left);
+//    DeleteTree(root->right);
+//    delete root;
+//}
 
 bool BinarySearchTree::Search(int data)
 {
@@ -165,4 +174,20 @@ Node* BinarySearchTree::Search(int data, Node *root)
         return Search(data, root->left);
     else
         return Search(data, root->right);
+}
+
+int BinarySearchTree::HeightOfNode(Node* node)
+{
+    if (node == nullptr)
+        return 0; // base case
+
+    int heightLeft = HeightOfNode(node->left);
+    int heightRight = HeightOfNode(node->right);
+
+    return (1 + max(heightLeft, heightRight));
+}
+
+int BinarySearchTree::HeightOfTree()
+{
+    return HeightOfNode(m_root);
 }

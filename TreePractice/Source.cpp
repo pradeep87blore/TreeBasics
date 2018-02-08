@@ -52,5 +52,7 @@ int main()
     else
         cout << iSearchKey << " not found in the tree" << endl;
 
+    cout << "Height of the tree is  : " << bt.HeightOfTree() << endl;
+
     cout << "End of program";
 }

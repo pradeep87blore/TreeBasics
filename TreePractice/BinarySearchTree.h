@@ -13,15 +13,19 @@ class BinarySearchTree
 
     void InOrderTraversal(Node *root);
 
-    void DeleteTree(Node *root);
+    // void DeleteTree(Node *root);
 
     Node* Search(int data, Node *root);
+
+    int HeightOfNode(Node* node);
+
+    // void DeleteNode(int data, Node *node);
 
 public:
     BinarySearchTree();
     ~BinarySearchTree();
     
-    void Delete(int data);
+    //void Delete(int data); // Not implemented yet
 
     bool Search(int data);
 
@@ -35,6 +39,8 @@ public:
 
     void LevelOrderTraveral();
 
-    void DeleteTree();
+    // void DeleteTree();
+
+    int HeightOfTree();
 };
 
